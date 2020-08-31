@@ -54,7 +54,7 @@ jobs:
       ONLY_CACHE: "false"
       MANUAL_CACHING: "1"
       DOC_PATH: "docs/building-cmake.md"
-      REPO_NAME: "kotatogram/kotatogram-desktop"
+      REPO_NAME: "Retrodynen/kotatogram-desktop"
       AUTO_CACHING: "1"
       CXX: "g++ -static-libstdc++"
 
