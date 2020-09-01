@@ -577,7 +577,6 @@ jobs:
           path: ${{ env.LibrariesPath }}/tg_owt
           key: ${{ runner.OS }}-webrtc-${{ env.CACHE_KEY }}
       - name: WebRTC.
-        if: steps.cache-webrtc.outputs.cache-hit != 'true'
         run: |
           cd $LibrariesPath
           git clone $GIT/desktop-app/tg_owt.git
@@ -596,12 +595,8 @@ jobs:
           ../..
 
           ninja
-          # Cleanup.
-          cd $LibrariesPath/tg_owt
-          mv out/Release/libtg_owt.a libtg_owt.a
-          rm -rf out
-          mkdir -p out/Release
-          mv libtg_owt.a out/Release/libtg_owt.a
+          sudo ninja install
+          sudo ldconfig
           rm -rf $LibrariesPath/openssl_${OPENSSL_VER}
 
       - name: Kotatogram Desktop build.
