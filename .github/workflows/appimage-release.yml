@@ -595,9 +595,15 @@ jobs:
           ../..
 
           ninja
-          sudo ninja install
+          # Cleanup.
+          cd $LibrariesPath/tg_owt
+          mv out/Release/libtg_owt.a libtg_owt.a
+          mkdir -p out/Release
+          mv libtg_owt.a out/Release/libtg_owt.a
           sudo ldconfig
           rm -rf $LibrariesPath/openssl_${OPENSSL_VER}
+          ls
+          pwd
 
       - name: Kotatogram Desktop build.
         if: env.ONLY_CACHE == 'false'
